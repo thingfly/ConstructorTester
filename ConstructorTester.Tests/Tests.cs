@@ -8,35 +8,33 @@
 
     using NUnit.Framework;
 
-    using Assert = ConstructorTester.Assert;
-
     [TestFixture]
     public class Tests
     {
         [Test]
         public void TestThatAValidClassDoesNotThrow()
         {
-            Assert.That.TheTheConstructorsCheckForNullsFor<AValidClass>();
+            TheConstructorsFor<AValidClass>.ShouldCheckForNulls();
         }
 
         [Test]
         public void TestThatAnInvalidClassThrows()
         {
-            Action runningTheTests = () => Assert.That.TheTheConstructorsCheckForNullsFor<AClassThatDoesNotCheckAnyDependencies>();
+            Action runningTheTests = TheConstructorsFor<AClassThatDoesNotCheckAnyDependencies>.ShouldCheckForNulls;
             runningTheTests.ShouldThrow<ConstructorParameterException>();
         }
 
         [Test]
         public void TestThatASlightlyInvalidClassThrows()
         {
-            Action runningTheTests = () => Assert.That.TheTheConstructorsCheckForNullsFor<AClassThatOnlyChecksSomeDependencies>();
+            Action runningTheTests = TheConstructorsFor<AClassThatOnlyChecksSomeDependencies>.ShouldCheckForNulls;
             runningTheTests.ShouldThrow<ConstructorParameterException>();
         }
 
         [Test]
         public void TestThatARegularExceptionIsRethrown()
         {
-            Action runningTheTests = () => Assert.That.TheTheConstructorsCheckForNullsFor<AClassThatThrowsAnExceptionInTheConstructor>();
+            Action runningTheTests = TheConstructorsFor<AClassThatThrowsAnExceptionInTheConstructor>.ShouldCheckForNulls;
             runningTheTests.ShouldThrowExactly<Exception>();
         }
     }

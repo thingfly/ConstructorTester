@@ -46,9 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assert.cs" />
-    <Compile Include="IConstructorTester.cs" />
-    <Compile Include="ConstructorTester.cs" />
+    <Compile Include="TheConstructorsFor.cs" />
     <Compile Include="ConstructorParameterException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

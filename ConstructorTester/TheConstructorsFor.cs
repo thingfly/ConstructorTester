@@ -7,9 +7,9 @@
 
     using NSubstitute;
 
-    internal class ConstructorTester : IConstructorTester
+    public static class TheConstructorsFor<T>
     {
-        public void TheTheConstructorsCheckForNullsFor<T>() where T : class
+        public static void ShouldCheckForNulls()
         {
             typeof(T).GetConstructors().ToList().ForEach(TestConstructorWithEachParameterAsNull);
         }
